@@ -109,6 +109,6 @@ class ScoreNet(nn.Module):
     h = self.act(h)
     h = self.tconv1(torch.cat([h, h1], dim=1))
 
-    # Normalize output
+    # Normalize output #normalizing by the weighting function
     h = h / self.marginal_prob_std(t)[:, None, None, None]
     return h
